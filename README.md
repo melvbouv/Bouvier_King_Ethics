@@ -2,28 +2,29 @@
 
 **The Hidden Cost of a Prompt** — an interactive AI ethics assignment for EDHEC, AI for Business, by Bouvier & King.
 
-The static website illustrates estimated cooling-water consumption, electricity consumption and greenhouse-gas emissions associated with repeated AI text requests. It also examines transparency, local impacts and efficiency versus total use.
+## Pages
 
-## Reference and limitations
+- `index.html`: ten French school prompts, estimated water/electricity/CO₂e counters, everyday equivalents and groups of 1, 30 or 200 people. A class of 30 is selected initially. Changing the prompt updates the estimate immediately. The one/ten generation controls compare repeated runs of the selected task; they are not a basket of earlier tasks.
+- `method.html`: the shortened explanation, full model, task assumptions, ethical discussion and primary sources.
 
-All three counters use the same May 2025 median Gemini Apps text-request reference reported by Elsworth et al. (2025): **0.26 mL water, 0.24 Wh electricity, 0.03 g CO₂e**. The water value covers direct cooling, and the carbon value uses the paper’s market-based accounting. Training, external networks, storage and user devices are outside the reference. Read the site’s methodology for the precise boundaries.
+## Model
 
-Prompt cards are illustrative, not individually measured. Multiplying a median reference describes a hypothetical scenario; it is not a prediction of average or total real-world usage. The website makes no AI API calls and has no analytics or tracking.
+This is a **hybrid educational scenario**, not a measurement of the exact prompts or a claim about a particular provider. `model.js` contains the data and calculation; `app.js` connects it to the interface.
 
-Primary reference: https://arxiv.org/html/2508.15734v1
+- Assumed output words for prompts 1–10: 30, 90, 150, 250, 500, 1,200, 1,000, 2,350, 4,000, 20,000.
+- Approximate output tokens = words ÷ 0.75. Actual tokenization varies by language/model.
+- Electricity = tokens × 0.3 Wh ÷ 500, based on [Epoch AI's 2025 analytical reference](https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use), scaled linearly for this teaching scenario.
+- Water = Wh × (0.26 ÷ 0.24) mL/Wh; carbon = Wh × (0.03 ÷ 0.24) g CO₂e/Wh. These fixed scenario ratios derive from [Google's rounded 2025 reference](https://arxiv.org/html/2508.15734v1). They are environmental proxies applied to the energy scenario, not measured water/carbon for GPT-4o or any named service. The carbon ratio is not a location-based grid factor.
+- Group total = per-generation estimate × generations per person × selected people.
+
+Long documents extrapolate this simplified model and may span multiple calls. Large input/PDF processing, hidden reasoning, retries, training, devices and networks are not modeled. A longer response does not follow an exact universal energy curve; see the methodology page for empirical research and limitations.
+
+## Everyday comparisons
+
+TV: 100 W. Car: 142 g CO₂e/km for Impact CO₂'s average diesel reference. Small water volumes: an assumed 250 mL glass. From 7.6 L upwards: shower duration at an assumed 7.6 L/min. These compare energy, greenhouse-gas quantity or volume, not identical overall environmental impacts. Sources and formulas are on the method page.
 
 ## Run and publish
 
-No installation or build step is needed. Open `index.html`, or serve this directory using any static web server. For GitHub Pages, publish the repository root from the `main` branch. All asset links are relative so the site supports a project URL.
+No dependencies or build step are required. Open `index.html` or serve this directory with a static web server. GitHub Pages publishes the root of `main`. All local links are relative and work at a project URL. No live AI API calls, analytics or tracking are used.
 
-## AI-use disclosure
-
-`Bouvier_King_Ethics_AI_Use.pdf` is the one-page disclosure accompanying the assignment. A matching `.txt` file is provided. The students remain responsible for the final submission and interpretation.
-
-Sources checked on 4 November 2026.
-
-## Everyday comparisons and group size
-
-The whole session is multiplied by the selected group: **1 person, 30 people, or 200 people**. No daily frequency or time period is assumed. Every simulated prompt adds one reference-equivalent request per person. The ten French school prompts are illustrative uses, not measured task-specific estimates or an energy ranking; a 50-page dissertation's real footprint is not inferred from this median.
-
-Equivalent quantities use a **100 W television** (Google study section 4.2), **142 g CO₂e/km for an average diesel car** ([Impact CO₂](https://impactco2.fr/outils/transport/voiturethermique)), and an assumed shower at **7.6 L/min** ([EPA WaterSense](https://www.epa.gov/watersense/showerheads)). Small values use seconds, metres or centimetres. These are separate energy, carbon and water-volume comparisons, not equivalent overall environmental impacts. Shower heating is excluded.
+Sources checked 4 November 2026.

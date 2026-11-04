@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="The calculation method, assumptions, ethical questions and sources behind Prompt Footprint.">
+  <title>Method & ethics — Prompt Footprint</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="method.css?v=3">
+</head>
+<body class="method-page">
+  <a class="skip-link" href="#model">Skip to the method</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html" aria-label="Prompt Footprint, back to simulator"><span class="brand-mark" aria-hidden="true">✳</span> prompt<span class="wordmark-light">footprint</span><span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="index.html">Simulator</a><a class="active" href="method.html" aria-current="page">Method & ethics</a><a href="#sources">Sources <span aria-hidden="true">↗</span></a></nav>
+    <span class="course-tag">EDHEC · AI FOR BUSINESS</span>
+  </header>
+  <main>
+    <section class="method-hero wrap">
+      <span class="eyebrow"><span class="status-dot"></span> BEHIND THE NUMBERS</span>
+      <h1>A footprint needs<br>an explanation.</h1>
+      <p class="method-lead">The calculator compares expected response lengths. Its figures describe a simplified teaching scenario, rather than measurements of your exact prompts.</p>
+      <a class="text-link" href="index.html">Back to the simulator <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <div class="wrap method-stack">
+      <section id="model" aria-labelledby="model-title">
+        <span class="eyebrow">01 / THE CALCULATION</span>
+        <h2 id="model-title">Longer answers, different estimates.</h2>
+        <div class="method-columns">
+          <div class="method-prose">
+            <p>Each prompt has an expected output length. We approximate <b>one token as 0.75 words</b> and apply Epoch AI’s 2025 estimate of <b>0.3 Wh per 500 output tokens</b>. This is a modelling reference, not a current measurement of every chatbot. <a href="#source-1">[1]</a></p>
+            <p>Water and carbon use fixed ratios derived from Google’s rounded Gemini Apps reference: <b>0.26 ÷ 0.24 mL/Wh</b> and <b>0.03 ÷ 0.24 g CO₂e/Wh</b>. Combining these with Epoch’s estimate creates a <b>hypothetical serving scenario</b>; it does not describe the measured footprint of GPT-4o, Gemini or another provider. The carbon ratio uses market-based accounting, not a local grid emission factor. <a href="#source-2">[2]</a></p>
+          </div>
+          <div class="formula-card">
+            <span class="eyebrow">THE MODEL, STEP BY STEP</span>
+            <ol>
+              <li><span>Tokens</span><b>Expected words ÷ 0.75</b></li>
+              <li><span>Electricity</span><b>Tokens × 0.3 ÷ 500 Wh</b></li>
+              <li><span>Cooling water</span><b>Electricity × (0.26 ÷ 0.24) mL</b></li>
+              <li><span>Emissions</span><b>Electricity × (0.03 ÷ 0.24) g CO₂e</b></li>
+            </ol>
+            <p>Each result is multiplied by generations per person and the selected group: 1, 30 or 200 people.</p>
+          </div>
+        </div>
+        <p class="method-limit">Actual use depends on the model, language, hardware and workload; energy per token can also change with output length. Long documents are linear extrapolations and may require several generations. Training, user devices, networks, PDF processing, large input contexts, hidden reasoning and retries are not separately modelled. <a href="#source-7">[7]</a></p>
+      </section>
+
+      <section id="assumptions" aria-labelledby="assumptions-title">
+        <span class="eyebrow">02 / WORKLOAD ASSUMPTIONS</span>
+        <h2 id="assumptions-title">What each prompt represents.</h2>
+        <p class="method-prose">Requested word counts are used directly. Unspecified lengths are project assumptions, not observed outputs. The word-to-token conversion is approximate, especially across languages.</p>
+        <div class="assumption-table-wrap">
+          <table class="assumption-table">
+            <caption>Expected output budgets used in the simulator</caption>
+            <thead><tr><th scope="col">Prompt</th><th scope="col">Words</th><th scope="col">Basis</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1 · Traduction courte</th><td>30</td><td>Assumed three-line output</td></tr>
+              <tr><th scope="row">2 · Exercice de maths</th><td>90</td><td>Assumed step-by-step explanation</td></tr>
+              <tr><th scope="row">3 · Explication de cours</th><td>150</td><td>Requested length</td></tr>
+              <tr><th scope="row">4 · Devoir d’anglais</th><td>250</td><td>Requested length</td></tr>
+              <tr><th scope="row">5 · Fiche de révision</th><td>500</td><td>Requested length</td></tr>
+              <tr><th scope="row">6 · Quiz avec correction</th><td>1,200</td><td>20 questions × 60 words including corrections</td></tr>
+              <tr><th scope="row">7 · Rédaction complète</th><td>1,000</td><td>Requested length</td></tr>
+              <tr><th scope="row">8 · Exposé à préparer</th><td>2,350</td><td>15 minutes × 130 words + 10 slides × 40 words</td></tr>
+              <tr><th scope="row">9 · Dossier de révision</th><td>4,000</td><td>10 pages × 400 words</td></tr>
+              <tr><th scope="row">10 · Dissertation de 50 pages</th><td>20,000</td><td>50 pages × 400 words</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="equivalents" aria-labelledby="equivalents-title">
+        <span class="eyebrow">03 / EVERYDAY EQUIVALENTS</span>
+        <h2 id="equivalents-title">Make the units tangible.</h2>
+        <div class="equivalent-notes">
+          <article><h3>Water</h3><p>A glass represents a chosen <b>250 mL</b>. Below 7.6 L, the calculator shows glasses; above that, it shows shower time at an assumed <b>7.6 L/min</b>, the approximate WaterSense maximum. <a href="#source-6">[6]</a></p></article>
+          <article><h3>Electricity</h3><p>TV time uses a <b>100 W television</b>, the comparison in Google’s study. Hours of viewing = Wh ÷ 100. <a href="#source-2">[2]</a></p></article>
+          <article><h3>Carbon</h3><p>Car distance uses <b>142 g CO₂e/km</b> for Impact CO₂’s average diesel-car reference, including manufacture and use. <a href="#source-5">[5]</a></p></article>
+        </div>
+        <p class="method-prose comparison-note">These compare quantities, not identical environmental effects. Cooling-water consumption and household water use differ; scarcity depends on location. Shower heating is excluded. <a href="#source-3">[3]</a></p>
+      </section>
+
+      <section id="ethics" aria-labelledby="ethics-title">
+        <span class="eyebrow">04 / THE ETHICAL QUESTION</span>
+        <h2 id="ethics-title">Who benefits? Who bears the cost?</h2>
+        <div class="ethics-grid">
+          <article><span class="ethics-number">01</span><h3>Local resources.</h3><p>AI’s users and the communities supplying water and electricity may be far apart. Businesses should consider local scarcity and community needs alongside the value created by their services. <a href="#source-3">[3]</a></p></article>
+          <article><span class="ethics-number">02</span><h3>Transparent choices.</h3><p>Supplier figures can cover different activities. Procurement decisions need clear boundaries and assumptions. Reducing cooling water can also increase electricity demand, so one “green” score can hide trade-offs. <a href="#source-2">[2]</a> <a href="#source-3">[3]</a></p></article>
+          <article><span class="ethics-number">03</span><h3>Efficiency and scale.</h3><p>Lower use per request can coexist with rising total demand. Organisations should track absolute consumption, choose suitable systems and question unnecessary generations. The IEA’s data-centre totals include non-AI services too. <a href="#source-4">[4]</a></p></article>
+        </div>
+      </section>
+    </div>
+
+    <section class="sources-section method-sources" id="sources" aria-labelledby="sources-title">
+      <div class="wrap">
+        <span class="eyebrow">05 / FOLLOW THE EVIDENCE</span>
+        <h2 id="sources-title">Sources.</h2>
+        <ol class="source-list">
+          <li id="source-1"><span class="source-index">01</span><div><a href="https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use" target="_blank" rel="noopener noreferrer">Josh You · Epoch AI, How much energy does ChatGPT use? (2025) <span aria-hidden="true">↗</span></a><p>Original model-based calculation: approximately 0.3 Wh for 500 output tokens. Not a direct meter reading.</p></div></li>
+          <li id="source-2"><span class="source-index">02</span><div><a href="https://arxiv.org/html/2508.15734v1" target="_blank" rel="noopener noreferrer">Elsworth et al. · AI environmental impact at Google Scale (2025) <span aria-hidden="true">↗</span></a><p>Company-authored Gemini study, Table 2: 0.24 Wh, 0.26 mL direct cooling water and 0.03 g CO₂e. Supplies scenario ratios and the TV comparison.</p></div></li>
+          <li id="source-3"><span class="source-index">03</span><div><a href="https://arxiv.org/html/2304.03271v5" target="_blank" rel="noopener noreferrer">Li et al. · Making AI Less “Thirsty” (revised 2025) <span aria-hidden="true">↗</span></a><p>Water accounting, geographic scarcity and water–carbon trade-offs.</p></div></li>
+          <li id="source-4"><span class="source-index">04</span><div><a href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary" target="_blank" rel="noopener noreferrer">International Energy Agency · Key Questions on Energy and AI (2026) <span aria-hidden="true">↗</span></a><p>Energy efficiency, growing demand and wider infrastructure impacts.</p></div></li>
+          <li id="source-5"><span class="source-index">05</span><div><a href="https://impactco2.fr/outils/transport/voiturethermique" target="_blank" rel="noopener noreferrer">Impact CO₂ · Thermal car footprint <span aria-hidden="true">↗</span></a><p>Average diesel-car equivalent: 142 g CO₂e/km, including manufacture and use.</p></div></li>
+          <li id="source-6"><span class="source-index">06</span><div><a href="https://www.epa.gov/watersense/showerheads" target="_blank" rel="noopener noreferrer">US EPA · WaterSense showerheads <span aria-hidden="true">↗</span></a><p>Maximum 2 US gallons/minute, approximately 7.6 L/min; used as an assumed shower flow.</p></div></li>
+          <li id="source-7"><span class="source-index">07</span><div><a href="https://ml.energy/blog/measurement/energy/diagnosing-inference-energy-consumption-with-the-mlenergy-leaderboard-v30/" target="_blank" rel="noopener noreferrer">Chung · Diagnosing Inference Energy Consumption, ML.ENERGY (2026) <span aria-hidden="true">↗</span></a><p>Empirical evidence that output length, hardware and serving configuration affect energy per token.</p></div></li>
+        </ol>
+        <div class="method-back"><a class="button button-dark" href="index.html">Return to the simulator <span aria-hidden="true">↗</span></a></div>
+        <footer class="site-footer"><a class="wordmark" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span> prompt<span class="wordmark-light">footprint</span><span class="brand-dot">.</span></a><p>Bouvier & King · EDHEC, AI for Business · 2026</p><span class="footer-date">Sources checked 4 November 2026</span></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
