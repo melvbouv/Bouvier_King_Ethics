@@ -56,7 +56,7 @@ function renderScenario(announce = false) {
   $("request-count").textContent = integer.format(totals.requests);
   $("prompt-text").textContent = TASKS[selectedTask].text;
   $("output-assumption").textContent = "≈ " + integer.format(totals.outputWords) + " words · " + integer.format(totals.outputTokens) + " tokens";
-  $("scale-summary").textContent = generations + (generations === 1 ? " response" : " responses") + " × " + groupSize + (groupSize === 1 ? " person" : " people") + " = " + integer.format(totals.requests) + " responses represented.";
+  $("scale-summary").textContent = generations + (generations === 1 ? " response" : " responses") + " × " + integer.format(groupSize) + (groupSize === 1 ? " person" : " people") + " = " + integer.format(totals.requests) + " responses represented.";
   document.querySelectorAll("[data-people]").forEach((button) => {
     const selected = Number(button.dataset.people) === groupSize;
     button.classList.toggle("selected", selected);

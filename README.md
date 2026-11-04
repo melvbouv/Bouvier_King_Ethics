@@ -4,7 +4,7 @@
 
 ## Pages
 
-- `index.html`: ten French school prompts, estimated water/electricity/CO₂e counters, everyday equivalents and groups of 1, 30 or 200 people. A class of 30 is selected initially. Changing the prompt updates the estimate immediately. The one/ten generation controls compare repeated runs of the selected task; they are not a basket of earlier tasks.
+- `index.html`: ten French school prompts, estimated water/electricity/CO₂e counters, everyday equivalents and groups of 1, 30, 200 or 10,000 people (EDHEC scenario). A class of 30 is selected initially. Changing the prompt updates the estimate immediately. The one/ten generation controls compare repeated runs of the selected task; they are not a basket of earlier tasks.
 - `method.html`: the shortened explanation, full model, task assumptions, ethical discussion and primary sources.
 
 ## Model

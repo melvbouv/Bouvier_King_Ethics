@@ -26,3 +26,5 @@
 /* Keep the data reference visible without adding another explanatory section. */
 .model-reference{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:12px 0 28px;padding:0 0 14px;border-bottom:1px solid var(--line)}.model-reference p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}.model-reference strong{color:var(--ink);font-weight:700}.model-reference p>span{display:block;font-size:10px}.model-reference>a{font-size:10px;white-space:nowrap;text-underline-offset:3px}.model-reference>a>span{font-size:14px}
 @media(max-width:600px){.model-reference{align-items:flex-start;flex-direction:column;gap:7px;margin:12px 0 22px;padding-bottom:14px}.model-reference p{font-size:10px}.model-reference p>span{font-size:9px;line-height:1.8}.model-reference>a{font-size:9px}}
+
+.group-option[data-people="10000"] .group-number{font-size:20px;letter-spacing:-1px;min-width:62px;white-space:nowrap}
