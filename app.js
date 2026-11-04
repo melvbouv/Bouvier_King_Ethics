@@ -17,7 +17,7 @@ function displayMetric(value, kind) {
   return { value: formatted, unit: units[kind][convert ? 1 : 0] };
 }
 function concise(value) {
-  return new Intl.NumberFormat("en-GB", { maximumFractionDigits: value > 0 && value < 0.01 ? 3 : 2 }).format(value);
+  return number.format(value);
 }
 function duration(seconds) {
   if (seconds >= 3600) return concise(seconds / 3600) + " h";
