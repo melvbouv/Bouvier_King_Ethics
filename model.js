@@ -20,7 +20,7 @@
   Object.values(TASKS).forEach(Object.freeze);
   function calculate(taskId, people = 30, generations = 1) {
     const task = TASKS[taskId];
-    if (!task || ![1, 30, 200].includes(people) || ![1, 10].includes(generations)) throw new RangeError("Invalid scenario");
+    if (!Object.hasOwn(TASKS, taskId) || ![1, 30, 200].includes(people) || ![1, 10].includes(generations)) throw new RangeError("Invalid scenario");
     const outputTokens = task.words / ASSUMPTIONS.wordsPerToken;
     const requests = people * generations;
     const energyWh = outputTokens / 500 * ASSUMPTIONS.energyWhPer500Tokens * requests;

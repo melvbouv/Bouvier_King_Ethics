@@ -3,7 +3,7 @@
 const { TASKS, calculate } = globalThis.FootprintModel;
 const EQUIVALENTS = Object.freeze({ tvWatts: 100, carGramsPerKm: 142, glassMl: 250, showerMlPerMinute: 7600 });
 const $ = (id) => document.getElementById(id);
-const number = new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const number = new Intl.NumberFormat("en-GB", { maximumSignificantDigits: 3 });
 const integer = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 });
 let selectedTask = 1;
 let groupSize = 30;
@@ -13,7 +13,7 @@ function displayMetric(value, kind) {
   const units = { water: ["mL", "L"], energy: ["Wh", "kWh"], carbon: ["g CO₂e", "kg CO₂e"] };
   const convert = value >= 1000;
   const scaled = convert ? value / 1000 : value;
-  const formatted = scaled > 0 && scaled < 0.01 ? scaled.toFixed(3) : number.format(scaled);
+  const formatted = number.format(scaled);
   return { value: formatted, unit: units[kind][convert ? 1 : 0] };
 }
 function concise(value) {
@@ -56,8 +56,7 @@ function renderScenario(announce = false) {
   $("request-count").textContent = integer.format(totals.requests);
   $("prompt-text").textContent = TASKS[selectedTask].text;
   $("output-assumption").textContent = "≈ " + integer.format(totals.outputWords) + " words · " + integer.format(totals.outputTokens) + " tokens";
-  $("scale-summary").textContent = generations + (generations === 1 ? " generation" : " generations") + " × " + groupSize + (groupSize === 1 ? " person" : " people") + " = " + integer.format(totals.requests) + " generations represented.";
-  $("activity-message").textContent = "Estimate for the selected task · " + generations + (generations === 1 ? " generation" : " generations") + " per person.";
+  $("scale-summary").textContent = generations + (generations === 1 ? " response" : " responses") + " × " + groupSize + (groupSize === 1 ? " person" : " people") + " = " + integer.format(totals.requests) + " responses represented.";
   document.querySelectorAll("[data-people]").forEach((button) => {
     const selected = Number(button.dataset.people) === groupSize;
     button.classList.toggle("selected", selected);
@@ -75,7 +74,7 @@ function renderScenario(announce = false) {
       void card.offsetWidth;
       card.classList.add("flash");
     });
-    $("counter-announcement").textContent = "Estimate updated. " + integer.format(totals.requests) + " generations of the selected task: " + number.format(totals.waterMl) + " millilitres water, " + number.format(totals.energyWh) + " watt-hours electricity and " + displayMetric(totals.carbonG, "carbon").value + " " + displayMetric(totals.carbonG, "carbon").unit + ".";
+    $("counter-announcement").textContent = "Estimate updated. " + integer.format(totals.requests) + " responses for the selected task: " + number.format(totals.waterMl) + " millilitres water, " + number.format(totals.energyWh) + " watt-hours electricity and " + displayMetric(totals.carbonG, "carbon").value + " " + displayMetric(totals.carbonG, "carbon").unit + ".";
   }
 }
 $("prompt-select").addEventListener("change", () => {

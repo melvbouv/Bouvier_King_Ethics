@@ -9,11 +9,11 @@
 
 ## Model
 
-This is a **hybrid educational scenario**, not a measurement of the exact prompts or a claim about a particular provider. `model.js` contains the data and calculation; `app.js` connects it to the interface.
+This is a **hybrid educational scenario**, not a measurement of the exact prompts or a claim about a particular provider. `model.js` contains the data and calculation; `app.js` connects it to the interface. The reference model and data year are shown beside the counters. Displayed results use up to three significant figures; small nonzero values remain visible.
 
 - Assumed output words for prompts 1–10: 30, 90, 150, 250, 500, 1,200, 1,000, 2,350, 4,000, 20,000.
 - Approximate output tokens = words ÷ 0.75. Actual tokenization varies by language/model.
-- Electricity = tokens × 0.3 Wh ÷ 500, based on [Epoch AI's 2025 analytical reference](https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use), scaled linearly for this teaching scenario.
+- Electricity = tokens × 0.3 Wh ÷ 500, based on [Epoch AI's 2025 GPT-4o analytical reference](https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use), scaled linearly for this teaching scenario.
 - Water = Wh × (0.26 ÷ 0.24) mL/Wh; carbon = Wh × (0.03 ÷ 0.24) g CO₂e/Wh. These fixed scenario ratios derive from [Google's rounded 2025 reference](https://arxiv.org/html/2508.15734v1). They are environmental proxies applied to the energy scenario, not measured water/carbon for GPT-4o or any named service. The carbon ratio is not a location-based grid factor.
 - Group total = per-generation estimate × generations per person × selected people.
 
