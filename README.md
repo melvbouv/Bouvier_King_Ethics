@@ -21,3 +21,9 @@ No installation or build step is needed. Open `index.html`, or serve this direct
 `Bouvier_King_Ethics_AI_Use.pdf` is the one-page disclosure accompanying the assignment. A matching `.txt` file is provided. The students remain responsible for the final submission and interpretation.
 
 Sources checked on 4 November 2026.
+
+## Everyday comparisons and group size
+
+The whole session is multiplied by the selected group: **1 person, 30 people, or 200 people**. No daily frequency or time period is assumed. Every simulated prompt adds one reference-equivalent request per person. The ten French school prompts are illustrative uses, not measured task-specific estimates or an energy ranking; a 50-page dissertation's real footprint is not inferred from this median.
+
+Equivalent quantities use a **100 W television** (Google study section 4.2), **142 g CO₂e/km for an average diesel car** ([Impact CO₂](https://impactco2.fr/outils/transport/voiturethermique)), and an assumed shower at **7.6 L/min** ([EPA WaterSense](https://www.epa.gov/watersense/showerheads)). Small values use seconds, metres or centimetres. These are separate energy, carbon and water-volume comparisons, not equivalent overall environmental impacts. Shower heating is excluded.
